@@ -1,7 +1,7 @@
 {
   "name": "study-express",
   "version": "1.0.0",
-  "description": "",
+  "description": "#### Node.js란? Node.js는 본래 브라우저에서만 돌리던 JavaScript를 일반 프로그램처럼 실행시킬 수 있는 런타임 프로그램이다.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,5 +12,14 @@
   "dependencies": {
     "express": "^4.17.1",
     "nodemon": "^2.0.11"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artemi13221/study-node-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/artemi13221/study-node-js/issues"
+  },
+  "homepage": "https://github.com/artemi13221/study-node-js#readme"
 }
