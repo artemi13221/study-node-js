@@ -38,8 +38,8 @@ app.listen(8080, () => {
   console.log("Start Server!");
 });
 ```
-index.js 또는 app.js (npm init의 entry point)에 저 코드를 작성한 뒤,
-`node app.js`로 js를 실행시키면, 백엔드가 구현된 것이다. 
+**app.js** (npm init의 entry point)에 코드를 작성한 뒤,
+`$ node app.js`로 js를 실행시키면, 백엔드가 구현된 것이다. 
 Start Server!가 출력되면,  `localhost:8080`에 접속하여 
 Hello, World!가 제대로 출력되는지 확인하자.
 
@@ -48,3 +48,13 @@ app.get("/test", (req, res) => {
   res.send('<div style="color:red">Test</div>');
 });
 ```
+와 같이 `localhost:8080/test`에 접속 가능한 페이지를 만들 수 있다.
+
+#### nodemon
+nodemon은 server의 js를 저장하는 순간, 자동 재실행해주는 귀차니즘을 덜어주는 모듈이다.
+
+`$ npm install nodemon --save-dev` 를 입력하여 nodemon을 설치하자.
+설치가 완료되면 **package.json**안에 있는 **"dependencies"** 목록에 nodemon이 추가된 것을 확인할 수 있다.
+
+**package.json**안, **"script"**에 `"start": "nodemon app.js"`를 입력한다.
+앞으론, `$ npm start`를 입력하여 서버를 실행할 수 있고, 저장하면 바로바로 자동 재실행해준다.
