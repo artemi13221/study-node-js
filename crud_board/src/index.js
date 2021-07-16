@@ -17,14 +17,26 @@ mongodb.connect(url)
   .then((client) => {
     console.log('Connected to database');
 
-    // 연결 된 mongodb의 clinet에 본격적으로 db를 연결한다.
+    // 연결 된 mongodb의 clinet에 'test-quotes'라는 이름으로 본격적으로 db를 연결한다.
     const db = client.db('test-quotes');
+    // 'test-quotes' 안에 'quotes'라는 컬렉션이름으로
     const quotesCollections = db.collection('quotes');
 
     // app.use => express.static을 통해 정적 웹을 설정해줄 수 있다.
     app.use(express.static(`${__dirname}/../public`));
-
     app.use(bodyParserJson());
+    app.set('view engine', 'ejs');
+
+    app.get('/', (req, res) => {
+      db.collection('quotes').find().toArray()
+        .then((result) => {
+          res.render('index.ejs', { quotes: result });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.send('error');
+        });
+    });
 
     app.post('/quotes', (req, res) => {
       quotesCollections.insertOne(req.body)

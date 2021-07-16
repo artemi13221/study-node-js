@@ -11,5 +11,13 @@
     <input type="text" name="name" id="input-name">
     <input type="text" name="hello" id="input-hello">
     <button id="input-button">Button</button>
+    <ul class="quotes">
+        <% for(var i = 0; i < quotes.length; i++) { %>
+            <li class="quotes-items">
+                <span><%= quotes[i].name %></span>
+                <span><%= quotes[i].hello %></span>
+            </li>
+        <% } %>
+    </ul>
 </body>
 </html>
