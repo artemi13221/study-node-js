@@ -41,13 +41,51 @@ mongodb.connect(url)
     app.post('/quotes', (req, res) => {
       quotesCollections.insertOne(req.body)
         .then((result) => {
+          console.log(result);
           res.send('ok');
         })
         .catch((error) => console.log(error));
     });
 
+    app.put('/quotes', (req, res) => {
+      quotesCollections.findOneAndUpdate({
+        name: '',
+      }, {
+        $set: {
+          name: req.body.name,
+          hello: req.body.hello,
+        },
+      }, {
+        upsert: true,
+      })
+        .then((result) => {
+          console.log(result);
+          res.send('ok');
+        })
+        .catch((error) => {
+          console.log(error);
+          res.send('error');
+        });
+    });
+
+    app.delete('/quotes', (req, res) => {
+      quotesCollections.deleteOne({
+        name: req.body.name,
+      })
+        .then((result) => {
+          if (result.deletedCount === 0) {
+            console.log('test');
+            return res.json('No quotes to delete');
+          }
+
+          console.log(result);
+          res.json('Deleted artemi!!');
+        })
+        .catch((error) => console.log(error));
+    });
+
     // listen 메소드를 통해 서버를 연다.
-    app.listen(3001, () => {
+    app.listen(10001, () => {
       console.log('server open');
     });
   })
