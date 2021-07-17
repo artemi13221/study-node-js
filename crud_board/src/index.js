@@ -75,11 +75,11 @@ mongodb.connect(url)
         .then((result) => {
           if (result.deletedCount === 0) {
             console.log('test');
-            return res.json('No quotes to delete');
+            res.json('No quotes to delete');
+          } else {
+            console.log(result);
+            res.json('Deleted artemi!!');
           }
-
-          console.log(result);
-          res.json('Deleted artemi!!');
         })
         .catch((error) => console.log(error));
     });

@@ -38,12 +38,11 @@ function deleteQuotes() {
     },
   })
     .then((responses) => {
-      messageDiv.textContent(responses);
-      if (responses === 'No quotes to delete') {
+      if (responses.data === 'No quotes to delete') {
         messageDiv.textContent = 'No quote to delete';
       } else {
         console.log(responses);
-        // document.location.reload();
+        document.location.reload();
       }
     })
     .catch((error) => console.log(error));
